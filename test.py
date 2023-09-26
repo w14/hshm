@@ -1,8 +1,13 @@
+import os
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 import torch
 
 device = 'cuda'
+
+if os.getcwd() == '/workspace/hshm':
+    print('Setting TRANSFORMERS_CACHE to /workspace/hshm')
+    os.environ['TRANSFORMERS_CACHE'] = '/workspace/hshm'
 
 model = AutoModelForCausalLM.from_pretrained("EleutherAI/gpt-j-6B")
 tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6B")
