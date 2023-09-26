@@ -5,12 +5,10 @@ import torch
 
 device = 'cuda'
 
-if os.getcwd() == '/workspace/hshm':
-    print('Setting TRANSFORMERS_CACHE to /workspace/hshm')
-    os.environ['TRANSFORMERS_CACHE'] = '/workspace/hshm'
+cache_dir = '/workspace/hshm'
 
-model = AutoModelForCausalLM.from_pretrained("EleutherAI/gpt-j-6B").to(device)
-tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6B").to(device)
+model = AutoModelForCausalLM.from_pretrained("EleutherAI/gpt-j-6B", cache_dir = cache_dir, device = device)
+tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6B", cache_dir = cache_dir, device = device)
 input_text = "Miles Davis plays the"
 
 print('tokeninzing')
