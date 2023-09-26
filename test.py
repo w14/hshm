@@ -7,8 +7,8 @@ device = 'cuda'
 
 cache_dir = '/workspace/hshm'
 
-model = AutoModelForCausalLM.from_pretrained("EleutherAI/gpt-j-6B", cache_dir = cache_dir, device = device)
-tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6B", cache_dir = cache_dir, device = device)
+model = AutoModelForCausalLM.from_pretrained("EleutherAI/gpt-j-6B", cache_dir = cache_dir).to(device)
+tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6B", cache_dir = cache_dir).to(device)
 input_text = "Miles Davis plays the"
 
 print('tokeninzing')
