@@ -5,13 +5,23 @@ import torch
 
 device = 'cuda'
 
+transformers.utils.move_cache()
+
 if os.getcwd() == '/workspace/hshm':
     print('Setting TRANSFORMERS_CACHE to /workspace/hshm')
     os.environ['TRANSFORMERS_CACHE'] = '/workspace/hshm'
 
-model = AutoModelForCausalLM.from_pretrained("EleutherAI/gpt-j-6B")
-tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6B")
+transformers.utils.move_cache()
+
+if os.getcwd() == '/workspace/hshm':
+    print('Setting TRANSFORMERS_CACHE to /workspace/hshm')
+    os.environ['TRANSFORMERS_CACHE'] = '/workspace/hshm'
+
+model = AutoModelForCausalLM.from_pretrained("EleutherAI/gpt-j-6B").to(device)
+tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6B").to(device)
 input_text = "Miles Davis plays the"
+
+print('tokeninzing')
 input_ids = tokenizer(input_text, return_tensors="pt").input_ids.to(device)
 
 # Forward pass
