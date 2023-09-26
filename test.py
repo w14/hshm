@@ -5,14 +5,6 @@ import torch
 
 device = 'cuda'
 
-transformers.utils.move_cache()
-
-if os.getcwd() == '/workspace/hshm':
-    print('Setting TRANSFORMERS_CACHE to /workspace/hshm')
-    os.environ['TRANSFORMERS_CACHE'] = '/workspace/hshm'
-
-transformers.utils.move_cache()
-
 if os.getcwd() == '/workspace/hshm':
     print('Setting TRANSFORMERS_CACHE to /workspace/hshm')
     os.environ['TRANSFORMERS_CACHE'] = '/workspace/hshm'
